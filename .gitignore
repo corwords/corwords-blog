@@ -216,3 +216,6 @@ FakesAssemblies/
 /DirectSales.Solution/Utilities/BuildUtilities.vshost.exe
 /DirectSales.Solution/Utilities/BuildUtilities.vshost.exe.config
 /DirectSales.Solution/Utilities/BuildUtilities.vshost.exe.manifest
+/src/Corwords.Data/project.lock.json
+/src/Corwords.Core/project.lock.json
+/src/Corwords/project.lock.json

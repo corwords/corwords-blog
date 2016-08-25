@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -10,7 +10,9 @@
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "WebApiContrib.Core.WebPages": "1.0.1",
-    "WebApiContrib.Core.TagHelpers.Markdown": "1.0.0"
+    "WebApiContrib.Core.TagHelpers.Markdown": "1.0.0",
+    "Corwords.Core": "1.0.0-*",
+    "Corwords.Data": "1.0.0-*"
   },
 
   "tools": {

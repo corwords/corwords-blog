@@ -12,7 +12,8 @@
     "WebApiContrib.Core.WebPages": "1.0.1",
     "WebApiContrib.Core.TagHelpers.Markdown": "1.0.0",
     "Corwords.Core": "1.0.0-*",
-    "Corwords.Data": "1.0.0-*"
+    "Corwords.Data": "1.0.0-*",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
   },
 
   "tools": {

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WilderMinds.MetaWeblog;
 using Corwords.Core.MetaWeblog;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Corwords
 {
@@ -18,7 +19,14 @@ namespace Corwords
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add authentication services
+            services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Add blog import service
             services.AddMetaWeblog<SqlMetaWeblogService>();
+
+            // Add MVC
+            services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,7 +39,18 @@ namespace Corwords
                 app.UseDeveloperExceptionPage();
             }
 
-            // Support MetaWeblog API
+            // Add Cookie Middleware
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                LoginPath = new PathString("/login"),
+                LogoutPath = new PathString("/logout")
+            });
+
+            // TODO: Add UseOAuthAuthentication middleware for connecting to 3rd parties (i.e. Facebook, Twitter, LinkedIn, Microsoft, GitHub)
+
+            // Add MetaWeblog Middleware
             app.UseMetaWeblog("/livewriter");
 
             app.Run(async (context) =>

@@ -48,6 +48,8 @@ namespace Corwords
                 LogoutPath = new PathString("/logout")
             });
 
+            app.UseIdentity();
+
             // TODO: Add UseOAuthAuthentication middleware for connecting to 3rd parties (i.e. Facebook, Twitter, LinkedIn, Microsoft, GitHub)
 
             // Add MetaWeblog Middleware

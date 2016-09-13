@@ -12,6 +12,20 @@ namespace Corwords
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
+
+        public Startup(IHostingEnvironment env)
+        {
+            // Load configuration
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath + "\\config")
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -34,13 +48,6 @@ namespace Corwords
         {
             loggerFactory.AddConsole();
 
-            // Load configuration
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath + "\\config")
-                .AddJsonFile("appsettings.json", optional: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,13 +69,16 @@ namespace Corwords
             // Add MetaWeblog Middleware
             app.UseMetaWeblog("/livewriter");
 
-            // Add environment variables
-            builder.AddEnvironmentVariables();
-            builder.Build();
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
 
-            app.Run(async (context) =>
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

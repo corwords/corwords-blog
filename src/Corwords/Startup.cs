@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Corwords.Core.MetaWeblog;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WilderMinds.MetaWeblog;
-using Corwords.Core.MetaWeblog;
-using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Corwords
 {
@@ -19,6 +16,9 @@ namespace Corwords
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Setup options with DI
+            services.AddOptions();
+
             // Add authentication services
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -33,6 +33,13 @@ namespace Corwords
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+
+            // Load configuration
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath + "\\config")
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
 
             if (env.IsDevelopment())
             {
@@ -54,6 +61,10 @@ namespace Corwords
 
             // Add MetaWeblog Middleware
             app.UseMetaWeblog("/livewriter");
+
+            // Add environment variables
+            builder.AddEnvironmentVariables();
+            builder.Build();
 
             app.Run(async (context) =>
             {

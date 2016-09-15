@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Config
 {
-    public class FirstRun
+    public class FirstRunOptions
     {
         public bool Enabled { get; set; }
         public string AdminUsername { get; set; }

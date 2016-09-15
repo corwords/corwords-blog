@@ -1,8 +1,12 @@
 ﻿using Corwords.Core.MetaWeblog;
+using Corwords.Data;
+using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -33,7 +37,13 @@ namespace Corwords
             // Setup options with DI
             services.AddOptions();
 
+            // Add the database context
+            services.AddDbContext<SecurityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Add authentication services
+            services.AddIdentity<ApplicationUser, IdentityRole > ()
+                .AddEntityFrameworkStores<SecurityContext>()
+                .AddDefaultTokenProviders();
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Add blog import service

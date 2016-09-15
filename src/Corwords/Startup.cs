@@ -1,4 +1,5 @@
-﻿using Corwords.Core.MetaWeblog;
+﻿using Corwords.Core.Config;
+using Corwords.Core.MetaWeblog;
 using Corwords.Data;
 using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,6 +37,7 @@ namespace Corwords
         {
             // Setup options with DI
             services.AddOptions();
+            //services.Configure<FirstRunOptions>(Configuration.GetSection("FirstRunOptions") as FirstRunOptions);
 
             // Add the database context
             services.AddDbContext<SecurityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

@@ -1,5 +1,4 @@
-﻿using Corwords.Core.Config;
-using Corwords.Core.MetaWeblog;
+﻿using Corwords.Core.MetaWeblog;
 using Corwords.Data;
 using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;

@@ -15,7 +15,7 @@ namespace Corwords.Data.Blog
         public DateTime DateUpdated { get; set; }
 
         public int BlogId { get; set; }
-        public Blog Blog { get; set; }
+        public IndividualBlog Blog { get; set; }
         public List<Category> Categories { get; set; }
     }
 }

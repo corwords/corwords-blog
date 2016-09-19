@@ -2,7 +2,7 @@
 
 namespace Corwords.Data.Blog
 {
-    public class Blog
+    public class IndividualBlog
     {
         public int BlogId { get; set; }
         public string Url { get; set; }

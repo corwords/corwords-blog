@@ -64,6 +64,9 @@ namespace Corwords
                 app.UseDeveloperExceptionPage();
             }
 
+            // Allow static files
+            app.UseStaticFiles();
+
             // Add Cookie Middleware
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

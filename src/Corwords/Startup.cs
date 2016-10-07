@@ -59,6 +59,7 @@ namespace Corwords
         {
             loggerFactory.AddConsole();
 
+            // In development, Add Exception Page
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -83,11 +84,7 @@ namespace Corwords
             // Add MetaWeblog Middleware
             app.UseMetaWeblog("/livewriter");
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
-
+            // Add MVC
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

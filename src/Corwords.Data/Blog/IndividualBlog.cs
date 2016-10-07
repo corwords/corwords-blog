@@ -8,6 +8,6 @@ namespace Corwords.Data.Blog
         public string Url { get; set; }
         public string Name { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }

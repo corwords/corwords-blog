@@ -20,6 +20,6 @@ namespace Corwords.Data.Blog
 
         //public int BlogId { get; set; }
         public IndividualBlog Blog { get; set; }
-        public ICollection<Category> Categories { get; set; }
+        public List<PostCategory> PostCategories { get; set; }
     }
 }

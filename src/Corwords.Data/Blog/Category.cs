@@ -16,6 +16,6 @@ namespace Corwords.Data.Blog
         //public string htmlUrl;
         //public string rssUrl;
 
-        public ICollection<Post> Posts { get; set; }
+        public List<PostCategory> PostCategories { get; set; }
     }
 }

@@ -8,9 +8,15 @@ namespace Corwords.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Blog.PostCategory>()
+                .HasOne(pc => pc.Post)
+                .WithMany(p => p.PostCategories)
+                .HasForeignKey(pc => pc.PostId);
 
-
-            //builder.Entity<Blog.Category>().HasMany(c => c.Posts)
+            builder.Entity<Blog.PostCategory>()
+                .HasOne(pc => pc.Category)
+                .WithMany(c => c.PostCategories)
+                .HasForeignKey(pc => pc.CategoryId);
 
             base.OnModelCreating(builder);
         }

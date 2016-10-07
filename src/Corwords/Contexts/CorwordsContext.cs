@@ -4,7 +4,7 @@ namespace Corwords.Data
 {
     public class CorwordsContext : DbContext
     {
-        public CorwordsContext(DbContextOptions<SecurityContext> options) : base(options) { }
+        public CorwordsContext(DbContextOptions<CorwordsContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

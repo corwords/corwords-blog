@@ -39,6 +39,7 @@ namespace Corwords
             //services.Configure<FirstRunOptions>(Configuration.GetSection("FirstRunOptions") as FirstRunOptions);
 
             // Add the database context
+            services.AddDbContext<CorwordsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<SecurityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add authentication services

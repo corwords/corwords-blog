@@ -4,7 +4,12 @@ namespace Corwords.Data
 {
     public class CorwordsContext : DbContext
     {
-        public CorwordsContext(DbContextOptions<CorwordsContext> options) : base(options) { }
+        public CorwordsContext(DbContextOptions<SecurityContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
 
         // Blog Models
         public DbSet<Blog.IndividualBlog> Blogs { get; set; }

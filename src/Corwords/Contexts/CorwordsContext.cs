@@ -8,6 +8,10 @@ namespace Corwords.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+
+            //builder.Entity<Blog.Category>().HasMany(c => c.Posts)
+
             base.OnModelCreating(builder);
         }
 

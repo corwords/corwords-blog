@@ -13,9 +13,9 @@ namespace Corwords.Controllers
         private readonly IOptions<FirstRunOptions> _firstRunOptions;
         public IConfigurationRoot Configuration { get; }
 
-        public InitController(IOptions<FirstRunOptions> optionsAccessor)
+        public InitController(IOptions<FirstRunOptions> firstRunOptions)
         {
-            _firstRunOptions = optionsAccessor;
+            _firstRunOptions = firstRunOptions;
         }
 
         // GET: /<controller>/

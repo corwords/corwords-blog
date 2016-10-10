@@ -1,4 +1,5 @@
-﻿using Corwords.Core.MetaWeblog;
+﻿using Corwords.Core.Config;
+using Corwords.Core.MetaWeblog;
 using Corwords.Data;
 using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -30,7 +31,7 @@ namespace Corwords
             if (env.IsDevelopment())
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
+                //builder.AddUserSecrets();
             }
 
             builder.AddEnvironmentVariables();
@@ -43,6 +44,7 @@ namespace Corwords
         {
             // Setup options with DI
             services.AddOptions();
+            services.Configure<FirstRunOptions>(Configuration);
             //services.Configure<FirstRunOptions>(Configuration.GetSection("FirstRunOptions") as FirstRunOptions);
 
             // Add the database context

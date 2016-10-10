@@ -9,17 +9,18 @@ namespace Corwords.Controllers
 {
     public class InitController : Controller
     {
-        private readonly IOptions<FirstRunOptions> _firstRunOptions;
+        //private readonly IOptions<FirstRunOptions> _firstRunOptions;
+        private FirstRunOptions _firstRunOptions;
 
         public InitController(IOptions<FirstRunOptions> firstRunOptions)
         {
-            _firstRunOptions = firstRunOptions;
+            _firstRunOptions = firstRunOptions.Value;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            if (_firstRunOptions.Value.Enabled)
+            if (_firstRunOptions.FirstRunEnabled)
                 return View();
 
             return new NotFoundResult();

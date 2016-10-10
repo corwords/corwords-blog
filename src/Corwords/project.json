@@ -1,5 +1,8 @@
 {
+  "userSecretsId": "aspnet-Corwords-357B01C1-78A3-4EEF-A4B9-202EBF505CB4",
   "dependencies": {
+    "Corwords.Core": "1.0.0-*",
+    "Corwords.Data": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"
@@ -11,19 +14,18 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "WebApiContrib.Core.WebPages": "1.0.1",
     "WebApiContrib.Core.TagHelpers.Markdown": "1.0.0",
-    "Corwords.Core": "1.0.0-*",
-    "Corwords.Data": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.1.0-alpha1-22034",
-    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Configuration.Binder": "1.0.0-rc2-final",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
     "Microsoft.AspNetCore.Mvc": "1.0.1",
-    "Microsoft.Extensions.Configuration.UserSecrets": "1.1.0-alpha1-22034"
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0-rc2-final"
   },
 
   "tools": {

@@ -8,9 +8,7 @@ namespace Corwords.Core.Config
 {
     public class FirstRunOptions
     {
-        public FirstRunOptions() { }
-
-        public bool Enabled { get; set; }
+        public bool FirstRunEnabled { get; set; }
         public string AdminUsername { get; set; }
         public string AdminPassword { get; set; }
     }

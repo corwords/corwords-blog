@@ -25,15 +25,15 @@ namespace Corwords
             // Load configuration
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile("config\\appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"config\\appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
             if (env.IsDevelopment())
             {
                 builder.AddUserSecrets();
             }
 
-            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -42,8 +42,8 @@ namespace Corwords
         public void ConfigureServices(IServiceCollection services)
         {
             // Setup options with DI
-            services.AddOptions();
-            services.Configure<FirstRunOptions>(options => Configuration.GetSection("FirstRunOptions").Bind(options));
+            //services.AddOptions();
+            services.Configure<FirstRunOptions>(Configuration.GetSection("FirstRunOptions"));
 
             // Add the database context
             services.AddDbContext<CorwordsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

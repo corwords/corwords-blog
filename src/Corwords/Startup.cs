@@ -1,5 +1,6 @@
 ﻿using Corwords.Core.Config;
 using Corwords.Core.MetaWeblog;
+using Corwords.Core.MVC;
 using Corwords.Data;
 using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -98,11 +99,14 @@ namespace Corwords
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
+            // Get the FirstRun flag
             var isFirstRunEnabled = false;
             bool.TryParse(Configuration["FirstRunOptions:FirstRunEnabled"], out isFirstRunEnabled);
-            if (isFirstRunEnabled)
-                routeBuilder.MapRoute("firstrun", "{controller=Init}/{action=Index}");
 
+            // Check if FirstRunEnabled == true
+            routeBuilder.MapRoute("firstrun", "{*firstrun}", defaults: new { controller = "Init", action = "Index", firstRunEnabled = isFirstRunEnabled }, constraints: new { firstrun = new FirstRunContraint() });
+
+            // Add default route
             routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
         }
     }

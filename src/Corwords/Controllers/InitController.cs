@@ -8,7 +8,6 @@ namespace Corwords.Controllers
 {
     public class InitController : Controller
     {
-        //private readonly IOptions<FirstRunOptions> _firstRunOptions;
         private FirstRunOptions _firstRunOptions;
 
         public InitController(IOptions<FirstRunOptions> firstRunOptions)
@@ -21,6 +20,8 @@ namespace Corwords.Controllers
         {
             if (_firstRunOptions.FirstRunEnabled)
                 return View();
+
+            
 
             return new NotFoundResult();
         }

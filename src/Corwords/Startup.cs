@@ -98,6 +98,11 @@ namespace Corwords
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
+            var isFirstRunEnabled = false;
+            bool.TryParse(Configuration["FirstRunOptions:FirstRunEnabled"], out isFirstRunEnabled);
+            if (isFirstRunEnabled)
+                routeBuilder.MapRoute("firstrun", "{controller=Init}/{action=Index}");
+
             routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
         }
     }

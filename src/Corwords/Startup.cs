@@ -99,12 +99,8 @@ namespace Corwords
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            // Get the FirstRun flag
-            var isFirstRunEnabled = false;
-            bool.TryParse(Configuration["FirstRunOptions:FirstRunEnabled"], out isFirstRunEnabled);
-
             // Check if FirstRunEnabled == true
-            routeBuilder.MapRoute("firstrun", "{*firstrun}", defaults: new { controller = "Init", action = "Index", firstRunEnabled = isFirstRunEnabled }, constraints: new { firstrun = new FirstRunContraint() });
+            routeBuilder.MapRoute("firstrun", "{*firstrun}", defaults: new { controller = "Init", action = "Index" }, constraints: new { firstrun = new FirstRunContraint() });
 
             // Add default route
             routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");

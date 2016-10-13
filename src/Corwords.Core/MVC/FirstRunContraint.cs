@@ -13,19 +13,8 @@ namespace Corwords.Core.MVC
     {
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values, RouteDirection routeDirection)
         {
-            var firstRunKey = "firstRunEnabled";
-            if (values.ContainsKey(firstRunKey))
-            {
-                var isFirstRunEnabled = false;
-                bool.TryParse(values[firstRunKey].ToString(), out isFirstRunEnabled);
-
-                if (isFirstRunEnabled)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            var options = httpContext.RequestServices.GetService(typeof(IOptions<FirstRunOptions>));
+            return (options as IOptions<FirstRunOptions>).Value.FirstRunEnabled;
         }
     }
 }

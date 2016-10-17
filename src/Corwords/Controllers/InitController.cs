@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Corwords.Core.Config;
+using Corwords.Core.Security;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,9 +20,12 @@ namespace Corwords.Controllers
         public IActionResult Index()
         {
             if (_firstRunOptions.FirstRunEnabled)
-                return View();
+            {
+                var success = SecuritySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
 
-            
+                if (success)
+                    return View();
+            }
 
             return new NotFoundResult();
         }

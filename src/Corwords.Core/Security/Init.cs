@@ -9,7 +9,12 @@ namespace Corwords.Core.Security
 {
     public class SecuritySetup
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private UserManager<ApplicationUser> _userManager;
+
+        public SecuritySetup(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
         public bool Initialize(string email, string username, string password)
         {

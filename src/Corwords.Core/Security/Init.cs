@@ -11,11 +11,12 @@ namespace Corwords.Core.Security
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public void AddAdminUser()
+        public bool Setup(string email, string username, string password)
         {
-            var user = new ApplicationUser { };
+            var user = new ApplicationUser { UserName = username };
+            var taskResult = _userManager.CreateAsync(user, password);
 
-            _userManager.CreateAsync(new ApplicationUser() { });
+            return taskResult.Result.Succeeded;
         }
     }
 }

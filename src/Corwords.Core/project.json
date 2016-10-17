@@ -6,7 +6,8 @@
     "System.Reflection.TypeExtensions": "4.1.0",
     "Microsoft.AspNetCore.Identity": "1.0.0",
     "WilderMinds.MetaWeblog": "1.0.2",
-    "Microsoft.AspNetCore.Routing": "1.0.1"
+    "Microsoft.AspNetCore.Routing": "1.0.1",
+    "Microsoft.NETCore.App": "1.0.1"
   },
   "frameworks": {
     "netcoreapp1.0": {

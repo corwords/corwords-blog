@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Security
 {
-    public class Init
+    public static class SecuritySetup
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public bool Setup(string email, string username, string password)
+        public static bool Initialize(string email, string username, string password)
         {
             var user = new ApplicationUser { UserName = username };
             var taskResult = _userManager.CreateAsync(user, password);

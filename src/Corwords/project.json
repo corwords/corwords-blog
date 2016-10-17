@@ -3,7 +3,10 @@
   "dependencies": {
     "Corwords.Core": "1.0.0-*",
     "Corwords.Data": "1.0.0-*",
-    "Microsoft.NETCore.App": "1.0.1",
+    "Microsoft.NETCore.App": {
+      "version": "1.0.1",
+      "type": "platform"
+    },
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",

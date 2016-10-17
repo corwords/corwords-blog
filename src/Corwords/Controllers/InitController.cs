@@ -21,7 +21,8 @@ namespace Corwords.Controllers
         {
             if (_firstRunOptions.FirstRunEnabled)
             {
-                var success = SecuritySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
+                var securitySetup = new SecuritySetup();
+                var success = securitySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
 
                 if (success)
                     return View();

@@ -4,6 +4,7 @@ using Corwords.Core.Config;
 using Corwords.Core.Security;
 using Microsoft.AspNetCore.Identity;
 using Corwords.Data.Security;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,12 +22,12 @@ namespace Corwords.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (_firstRunOptions.FirstRunEnabled)
             {
                 var securitySetup = new SecuritySetup(_userManager);
-                var success = securitySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
+                var success = await securitySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
 
                 if (success)
                     return View();

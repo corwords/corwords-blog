@@ -13,12 +13,14 @@ namespace Corwords.Controllers
     public class InitController : Controller
     {
         private FirstRunOptions _firstRunOptions;
+        private FeatureOptions _featureOptions;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public InitController(UserManager<ApplicationUser> userManager, IOptions<FirstRunOptions> firstRunOptions)
+        public InitController(UserManager<ApplicationUser> userManager, IOptions<FirstRunOptions> firstRunOptions, IOptions<FeatureOptions> featureOptions)
         {
             _userManager = userManager;
             _firstRunOptions = firstRunOptions.Value;
+            _featureOptions = featureOptions.Value;
         }
 
         // GET: /<controller>/
@@ -31,6 +33,11 @@ namespace Corwords.Controllers
 
                 if (success)
                     return View();
+            }
+
+            if (_featureOptions.Blogging)
+            {
+                // TODO: Create our blog
             }
 
             return new NotFoundResult();

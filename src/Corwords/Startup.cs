@@ -1,5 +1,5 @@
 ﻿using Corwords.Core.Config;
-using Corwords.Core.MetaWeblog;
+using Corwords.Core.Content.Blog.MetaWeblog;
 using Corwords.Core.MVC;
 using Corwords.Data;
 using Corwords.Data.Security;

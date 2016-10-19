@@ -1,4 +1,4 @@
-﻿namespace Corwords.Core.WordToMarkdown
+﻿namespace Corwords.Core.Content.Markdown.WordToMarkdown
 {
     public class MarkdownContent
     {

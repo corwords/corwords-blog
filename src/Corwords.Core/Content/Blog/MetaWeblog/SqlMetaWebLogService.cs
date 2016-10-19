@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WilderMinds.MetaWeblog;
 
-namespace Corwords.Core.MetaWeblog
+namespace Corwords.Core.Content.Blog.MetaWeblog
 {
     public class SqlMetaWeblogService : IMetaWeblogProvider
     {

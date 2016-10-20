@@ -16,12 +16,17 @@ namespace Corwords.Core.Security
             _userManager = userManager;
         }
 
-        public async Task<bool> Initialize(string email, string username, string password)
+        public async Task<TransactionStatus> Initialize(string email, string username, string password)
         {
+            var status = new TransactionStatus();
+
             var user = new ApplicationUser { UserName = username };
             var result = await _userManager.CreateAsync(user, password);
 
-            return result.Succeeded;
+            if (!result.Succeeded)
+                status.AddFailMessage(result.Errors.First().Description, false);
+
+            return status;
         }
     }
 }

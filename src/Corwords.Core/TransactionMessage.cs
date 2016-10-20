@@ -33,5 +33,12 @@
             Message = message;
             DisplayMessage = display;
         }
+
+        public TransactionMessage(string key, string message, bool display)
+        {
+            MessageKey = key;
+            Message = message;
+            DisplayMessage = display;
+        }
     }
 }

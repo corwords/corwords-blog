@@ -2,7 +2,7 @@
 
 namespace Corwords.Data
 {
-    public class CorwordsContext : DbContext
+    public class CorwordsContext : DbContext, ICorwordsContext
     {
         public CorwordsContext(DbContextOptions<CorwordsContext> options) : base(options) { }
 

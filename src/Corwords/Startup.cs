@@ -52,7 +52,7 @@ namespace Corwords
             services.AddDbContext<SecurityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add authentication services
-            services.AddIdentity<ApplicationUser, IdentityRole > ()
+            services.AddIdentity<ApplicationUser, IdentityRole> ()
                 .AddEntityFrameworkStores<SecurityContext>()
                 .AddDefaultTokenProviders();
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
@@ -92,7 +92,7 @@ namespace Corwords
             // TODO: Add UseOAuthAuthentication middleware for connecting to 3rd parties (i.e. Facebook, Twitter, LinkedIn, Microsoft, GitHub)
 
             // Add MetaWeblog Middleware
-            app.UseMetaWeblog("/livewriter");
+            app.UseMetaWeblog("/metaweblog");
 
             // Add MVC
             app.UseMvc(ConfigureRoutes);

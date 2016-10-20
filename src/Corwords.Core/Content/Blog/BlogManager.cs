@@ -6,9 +6,9 @@ namespace Corwords.Core.Content.Blog
 {
     public class BlogManager
     {
-        private CorwordsContext _context;
+        private ICorwordsContext _context;
 
-        public BlogManager(CorwordsContext context)
+        public BlogManager(ICorwordsContext context)
         {
             _context = context;
         }

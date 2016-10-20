@@ -5,6 +5,8 @@ using Corwords.Core.Security;
 using Microsoft.AspNetCore.Identity;
 using Corwords.Data.Security;
 using System.Threading.Tasks;
+using Corwords.Data;
+using Corwords.Core.Content.Blog;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,10 +16,12 @@ namespace Corwords.Controllers
     {
         private FirstRunOptions _firstRunOptions;
         private FeatureOptions _featureOptions;
+        private readonly CorwordsContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public InitController(UserManager<ApplicationUser> userManager, IOptions<FirstRunOptions> firstRunOptions, IOptions<FeatureOptions> featureOptions)
+        public InitController(CorwordsContext context, UserManager<ApplicationUser> userManager, IOptions<FirstRunOptions> firstRunOptions, IOptions<FeatureOptions> featureOptions)
         {
+            _context = context;
             _userManager = userManager;
             _firstRunOptions = firstRunOptions.Value;
             _featureOptions = featureOptions.Value;
@@ -37,7 +41,8 @@ namespace Corwords.Controllers
 
             if (_featureOptions.Blogging)
             {
-                // TODO: Create our blog
+                var blogManager = new BlogManager(_context);
+                blogManager.CreateBlog("blog", "/blog");
             }
 
             return new NotFoundResult();

@@ -33,16 +33,19 @@ namespace Corwords.Controllers
             if (_firstRunOptions.FirstRunEnabled)
             {
                 var securitySetup = new SecuritySetup(_userManager);
-                var success = await securitySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
+                var securitySetupStatus = await securitySetup.Initialize(_firstRunOptions.AdminEmailAddress, _firstRunOptions.AdminUsername, _firstRunOptions.AdminPassword);
 
-                if (success)
+                if (securitySetupStatus.Success)
                     return View();
             }
 
             if (_featureOptions.Blogging)
             {
                 var blogManager = new BlogManager(_context);
-                blogManager.CreateBlog("blog", "/blog");
+                var blogStatus = blogManager.CreateBlog("blog", "/blog");
+
+                if (blogStatus.Success)
+                    return View();
             }
 
             return new NotFoundResult();

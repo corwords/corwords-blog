@@ -29,6 +29,7 @@ namespace Corwords.Core.Content.Blog
             {
                 var blog = new IndividualBlog() { Name = name, Url = url };
                 _context.Blogs.Add(blog);
+                _context.SaveChanges();
             }
 
             return status;

@@ -45,6 +45,7 @@ namespace Corwords
             // Setup options with DI
             //services.AddOptions();
             services.Configure<FirstRunOptions>(Configuration.GetSection("FirstRunOptions"));
+            services.Configure<FeatureOptions>(Configuration.GetSection("FeatureOptions"));
 
             // Add the database context
             services.AddDbContext<CorwordsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

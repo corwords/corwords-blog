@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
@@ -9,9 +10,9 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             Id = Guid.NewGuid().ToString();
         }
 
-        public Blog(string blogName) : this()
+        public Blog(string name) : this()
         {
-            BlogName = blogName;
+            Name = name;
         }
     }
 
@@ -23,12 +24,15 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
     {
         public Blog() { }
 
-        public Blog(string blogName) : this()
+        public Blog(string name) : this()
         {
-            BlogName = blogName;
+            Name = name;
         }
 
+        // public int BlogId { get; set; }
         public virtual TKey Id { get; set; }
-        public virtual string BlogName { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Url { get; set; }
+        public virtual ICollection<TBlogPost> Posts { get; } = new List<TBlogPost>();
     }
 }

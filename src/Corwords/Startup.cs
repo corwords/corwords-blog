@@ -1,8 +1,9 @@
-﻿using Corwords.Core.Config;
-using Corwords.Core.Content.Blog.MetaWeblog;
+﻿using Corwords.Core.Blog;
+using Corwords.Core.Blog.EntityFrameworkCore;
+using Corwords.Core.Config;
 using Corwords.Core.MVC;
+using Corwords.Core.Security;
 using Corwords.Data;
-using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WilderMinds.MetaWeblog;
 
 namespace Corwords
 {
@@ -57,8 +57,9 @@ namespace Corwords
                 .AddDefaultTokenProviders();
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
-            // Add blog import service
-            services.AddMetaWeblog<SqlMetaWeblogService>();
+            // Add blog services
+            services.AddBlogging<BlogService>()
+                .AddEntityFrameworkStores<CorwordsContext>();
 
             // Add MVC
             services.AddMvc();

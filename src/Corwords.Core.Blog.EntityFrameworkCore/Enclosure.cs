@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Corwords.Data.Blog
+namespace Corwords.Core.Blog.EntityFrameworkCore
 {
     public class Enclosure
     {

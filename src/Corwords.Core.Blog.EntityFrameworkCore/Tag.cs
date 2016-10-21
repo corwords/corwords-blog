@@ -5,21 +5,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class BlogPost : IBlogPost
+    public class Tag : ITag
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
         public virtual string Title { get; set; }
-        public virtual string Content { get; set; }
-        public virtual string Slug { get; set; }
-        public virtual string Author { get; set; }
-        public virtual string AuthorUsername { get; set; }
+        public virtual string Description { get; set; }
         public virtual DateTime DateCreated { get; set; }
-        public virtual DateTime DateUpdate { get; set; }
+        //public string htmlUrl;
+        //public string rssUrl;
 
-        public virtual int BlogId { get; set; }
-        public Core.Blog.IBlog Blog { get; set; }
         public virtual IList<IPostTag> PostTags { get; set; }
     }
 }

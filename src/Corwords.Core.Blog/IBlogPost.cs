@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace Corwords.Core.Blog
 {
     public interface IBlogPost<TPostTag>
+        where TPostTag : IPostTag<TPostTag>
     {
         int Id { get; set; }
         string Title { get; set; }
@@ -15,7 +16,7 @@ namespace Corwords.Core.Blog
         DateTime DateUpdate { get; set; }
 
         int BlogId { get; set; }
-        //IBlog<IPostTag<TPostTag>> Blog { get; set; }
+        IBlog<TPostTag> Blog { get; set; }
         IList<TPostTag> PostTags { get; set; }
     }
 }

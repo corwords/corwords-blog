@@ -19,7 +19,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         public virtual DateTime DateUpdate { get; set; }
 
         public virtual int BlogId { get; set; }
-        //public Core.Blog.IBlog Blog { get; set; }
+        public virtual IBlog<PostTag> Blog { get; set; }
         public virtual IList<PostTag> PostTags { get; set; }
     }
 }

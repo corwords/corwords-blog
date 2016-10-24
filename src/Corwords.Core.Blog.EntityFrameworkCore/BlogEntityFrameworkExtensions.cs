@@ -18,7 +18,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         {
             var blogServiceType = typeof(BlogService).MakeGenericType(blogType, contextType);
             var services = new ServiceCollection();
-            services.AddScoped(typeof(IBlogService).MakeGenericType(blogType), blogServiceType);
+            services.AddScoped(typeof(IBlogService<PostTag>).MakeGenericType(blogType), blogServiceType);
             return services;
         }
     }

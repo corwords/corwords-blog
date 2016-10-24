@@ -2,14 +2,14 @@
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class BlogService : IBlogService
+    public class BlogService : IBlogService<PostTag>
     {
-        public int AddCategory(string key, string username, string password, ITag category)
+        public int AddCategory(string key, string username, string password, ITag<PostTag> category)
         {
             throw new NotImplementedException();
         }
 
-        public string AddPost(string blogid, string username, string password, IBlogPost post, bool publish)
+        public string AddPost(string blogid, string username, string password, IBlogPost<PostTag> post, bool publish)
         {
             throw new NotImplementedException();
         }
@@ -24,22 +24,22 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public bool EditPost(string postid, string username, string password, IBlogPost post, bool publish)
+        public bool EditPost(string postid, string username, string password, IBlogPost<PostTag> post, bool publish)
         {
             throw new NotImplementedException();
         }
 
-        public ITag[] GetCategories(string blogid, string username, string password)
+        public ITag<PostTag>[] GetCategories(string blogid, string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public IBlogPost GetPost(string postid, string username, string password)
+        public IBlogPost<PostTag> GetPost(string postid, string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public IBlogPost[] GetRecentPosts(string blogid, string username, string password, int numberOfPosts)
+        public IBlogPost<PostTag>[] GetRecentPosts(string blogid, string username, string password, int numberOfPosts)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +49,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public Core.Blog.IBlog[] GetUsersBlogs(string key, string username, string password)
+        public Core.Blog.IBlog<PostTag>[] GetUsersBlogs(string key, string username, string password)
         {
             throw new NotImplementedException();
         }

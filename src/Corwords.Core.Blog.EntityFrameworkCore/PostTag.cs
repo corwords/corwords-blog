@@ -1,18 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class PostTag
+    public class PostTag : IPostTag<PostTag>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual int PostCategoryId { get; set; }
+        public virtual int PostTagId { get; set; }
 
         public virtual int PostId { get; set; }
-        public virtual IBlogPost Post { get; set; }
+        public virtual IBlogPost<PostTag> Post { get; set; }
 
-        public virtual int CategoryId { get; set; }
-        public virtual ITag Category { get; set; }
+        public virtual int TagId { get; set; }
+        public virtual ITag<PostTag> Tag { get; set; }
     }
 }

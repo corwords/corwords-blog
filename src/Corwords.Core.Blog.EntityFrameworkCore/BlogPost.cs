@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class PostTag : IBlogPost
+    public class BlogPost : IBlogPost<PostTag>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         public virtual DateTime DateUpdate { get; set; }
 
         public virtual int BlogId { get; set; }
-        public Core.Blog.IBlog Blog { get; set; }
-        public virtual IList<IPostTag> PostTags { get; set; }
+        //public Core.Blog.IBlog Blog { get; set; }
+        public virtual IList<PostTag> PostTags { get; set; }
     }
 }

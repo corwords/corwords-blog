@@ -38,9 +38,9 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
                 .HasForeignKey(pc => pc.PostId);
 
             builder.Entity<PostTag>()
-                .HasOne(pt => pt.Category)
+                .HasOne(pt => pt.Tag)
                 .WithMany(t => t.PostTags as List<PostTag>)
-                .HasForeignKey(pc => pc.CategoryId);
+                .HasForeignKey(pc => pc.TagId);
 
             base.OnModelCreating(builder);
         }

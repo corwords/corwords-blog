@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class Tag : ITag
+    public class Tag : ITag<PostTag>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,6 +16,6 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         //public string htmlUrl;
         //public string rssUrl;
 
-        public virtual IList<IPostTag> PostTags { get; set; }
+        public virtual IList<PostTag> PostTags { get; set; }
     }
 }

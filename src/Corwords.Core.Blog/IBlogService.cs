@@ -2,21 +2,23 @@
 
 namespace Corwords.Core.Blog
 {
-    public interface IBlogService<TPostTag> : IDisposable 
-        where TPostTag : IPostTag<TPostTag>
+    public interface IBlogService<TBlog, TBlogPost, TPostTag> : IDisposable
+        where TBlog : IBlog<TBlog, TBlogPost, TPostTag>
+        where TBlogPost : IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TPostTag : IPostTag<TBlog, TBlogPost, TPostTag>
     {
         IUserInfo GetUserInfo(string key, string username, string password);
-        IBlog<TPostTag>[] GetUsersBlogs(string key, string username, string password);
+        IBlog<TBlog, TBlogPost, TPostTag>[] GetUsersBlogs(string key, string username, string password);
 
-        IBlogPost<TPostTag> GetPost(string postid, string username, string password);
-        IBlogPost<TPostTag>[] GetRecentPosts(string blogid, string username, string password, int numberOfPosts);
+        IBlogPost<TBlog, TBlogPost, TPostTag> GetPost(string postid, string username, string password);
+        IBlogPost<TBlog, TBlogPost, TPostTag>[] GetRecentPosts(string blogid, string username, string password, int numberOfPosts);
 
-        string AddPost(string blogid, string username, string password, IBlogPost<TPostTag> post, bool publish);
+        string AddPost(string blogid, string username, string password, IBlogPost<TBlog, TBlogPost, TPostTag> post, bool publish);
         bool DeletePost(string key, string postid, string username, string password, bool publish);
-        bool EditPost(string postid, string username, string password, IBlogPost<TPostTag> post, bool publish);
+        bool EditPost(string postid, string username, string password, IBlogPost<TBlog, TBlogPost, TPostTag> post, bool publish);
 
-        ITag<TPostTag>[] GetCategories(string blogid, string username, string password);
-        int AddCategory(string key, string username, string password, ITag<TPostTag> category);
+        ITag<TBlog, TBlogPost, TPostTag>[] GetCategories(string blogid, string username, string password);
+        int AddCategory(string key, string username, string password, ITag<TBlog, TBlogPost, TPostTag> category);
         
         IMediaObjectInfo NewMediaObject(string blogid, string username, string password, IMediaObject mediaObject);
 

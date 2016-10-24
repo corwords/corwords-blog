@@ -58,7 +58,7 @@ namespace Corwords
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Add blog services
-            services.AddBlogging<BlogService, PostTag>()
+            services.AddBlogging<BlogService, Blog, BlogPost, PostTag>()
                 .AddEntityFrameworkStores<CorwordsContext>();
 
             // Add MVC
@@ -93,7 +93,7 @@ namespace Corwords
             // TODO: Add UseOAuthAuthentication middleware for connecting to 3rd parties (i.e. Facebook, Twitter, LinkedIn, Microsoft, GitHub)
 
             // Add MetaWeblog Middleware
-            app.UseMetaWeblog<PostTag>("/metaweblog");
+            app.UseMetaWeblog<Blog, BlogPost, PostTag>("/metaweblog");
 
             // Add MVC
             app.UseMvc(ConfigureRoutes);

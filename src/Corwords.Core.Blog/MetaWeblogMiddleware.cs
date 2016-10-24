@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Blog
 {
-    public class MetaWeblogMiddleware<TPostTag>
-        where TPostTag : class, IPostTag<TPostTag>
+    public class MetaWeblogMiddleware<TBlog, TBlogPost, TPostTag>
+        where TBlog : class, IBlog<TBlog, TBlogPost, TPostTag>
+        where TBlogPost : class, IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TPostTag : class, IPostTag<TBlog, TBlogPost, TPostTag>
     {
         private ILogger _logger;
         private readonly RequestDelegate _next;
-        private MetaWeblogService<TPostTag> _service;
+        private MetaWeblogService<TBlog, TBlogPost, TPostTag> _service;
         private string _urlEndpoint;
 
-        public MetaWeblogMiddleware(RequestDelegate next, ILoggerFactory loggerFactory, string urlEndpoint, MetaWeblogService<TPostTag> service)
+        public MetaWeblogMiddleware(RequestDelegate next, ILoggerFactory loggerFactory, string urlEndpoint, MetaWeblogService<TBlog, TBlogPost, TPostTag> service)
         {
             _next = next;
-            _logger = loggerFactory.CreateLogger<MetaWeblogMiddleware<TPostTag>>(); ;
+            _logger = loggerFactory.CreateLogger<MetaWeblogMiddleware<TBlog, TBlogPost, TPostTag>>(); ;
             _urlEndpoint = urlEndpoint;
             _service = service;
         }

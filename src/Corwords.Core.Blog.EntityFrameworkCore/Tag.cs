@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class Tag : ITag<PostTag>
+    public class Tag : ITag<Blog, BlogPost, PostTag>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

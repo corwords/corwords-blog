@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace Corwords.Core.Blog
 {
-    public interface IBlogPost<TPostTag>
-        where TPostTag : IPostTag<TPostTag>
+    public interface IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TBlog : IBlog<TBlog, TBlogPost, TPostTag>
+        where TBlogPost : IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TPostTag : IPostTag<TBlog, TBlogPost, TPostTag>
     {
         int Id { get; set; }
         string Title { get; set; }
@@ -16,7 +18,7 @@ namespace Corwords.Core.Blog
         DateTime DateUpdate { get; set; }
 
         int BlogId { get; set; }
-        IBlog<TPostTag> Blog { get; set; }
+        IBlog<TBlog, TBlogPost, TPostTag> Blog { get; set; }
         IList<TPostTag> PostTags { get; set; }
     }
 }

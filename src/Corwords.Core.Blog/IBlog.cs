@@ -2,11 +2,12 @@
 
 namespace Corwords.Core.Blog
 {
-    public interface IBlog
+    public interface IBlog<TPostTag>
+        where TPostTag : IPostTag<TPostTag>
     {
         int Id { get; set; }
         string Name { get; set; }
-        IList<IBlogPost> Posts { get; set; }
+        IList<TPostTag> Posts { get; set; }
         string Url { get; set; }
     }
 }

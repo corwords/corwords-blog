@@ -5,16 +5,18 @@ namespace Corwords.Core.Blog
 {
     public static class BlogServiceCollectionExtensions
     {
-        public static IApplicationBuilder UseMetaWeblog(this IApplicationBuilder builder, string path)
+        public static IApplicationBuilder UseMetaWeblog<TPostTag>(this IApplicationBuilder builder, string path)
+            where TPostTag : class, IPostTag<TPostTag>
         {
-            return builder.UseMiddleware<MetaWeblogMiddleware>(path);
+            return builder.UseMiddleware<MetaWeblogMiddleware<TPostTag>>(path);
         }
 
-        public static BlogBuilder AddBlogging<TBlogService>(this IServiceCollection services)
-            where TBlogService : class, IBlogService
+        public static BlogBuilder AddBlogging<TBlogService, TPostTag>(this IServiceCollection services)
+            where TBlogService : class, IBlogService<TPostTag>
+            where TPostTag : class, IPostTag<TPostTag>
         {
-            services.AddScoped<IBlogService, TBlogService>();
-            services.AddScoped<MetaWeblogService>();
+            services.AddScoped<IBlogService<TPostTag>, TBlogService>();
+            services.AddScoped<MetaWeblogService<TPostTag>>();
             return new BlogBuilder(typeof(TBlogService), services);
         }
     }

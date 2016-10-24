@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Corwords.Core.Blog
 {
-    public interface IBlogPost
+    public interface IBlogPost<TPostTag>
     {
         int Id { get; set; }
         string Title { get; set; }
@@ -15,7 +15,7 @@ namespace Corwords.Core.Blog
         DateTime DateUpdate { get; set; }
 
         int BlogId { get; set; }
-        IBlog Blog { get; set; }
-        IList<IPostTag> PostTags { get; set; }
+        //IBlog<IPostTag<TPostTag>> Blog { get; set; }
+        IList<TPostTag> PostTags { get; set; }
     }
 }

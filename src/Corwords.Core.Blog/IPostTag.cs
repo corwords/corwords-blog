@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace Corwords.Core.Blog
 {
     public interface IPostTag<TBlog, TBlogPost, TPostTag>
-        where TBlog : IBlog<TBlog, TBlogPost, TPostTag>
-        where TBlogPost : IBlogPost<TBlog, TBlogPost, TPostTag>
-        where TPostTag : IPostTag<TBlog, TBlogPost, TPostTag>
+        where TBlog : class, IBlog<TBlog, TBlogPost, TPostTag>
+        where TBlogPost : class, IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TPostTag : class, IPostTag<TBlog, TBlogPost, TPostTag>
     {
         int PostTagId { get; set; }
 

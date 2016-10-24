@@ -3,9 +3,9 @@
 namespace Corwords.Core.Blog
 {
     public interface IBlogService<TBlog, TBlogPost, TPostTag> : IDisposable
-        where TBlog : IBlog<TBlog, TBlogPost, TPostTag>
-        where TBlogPost : IBlogPost<TBlog, TBlogPost, TPostTag>
-        where TPostTag : IPostTag<TBlog, TBlogPost, TPostTag>
+        where TBlog : class, IBlog<TBlog, TBlogPost, TPostTag>
+        where TBlogPost : class, IBlogPost<TBlog, TBlogPost, TPostTag>
+        where TPostTag : class, IPostTag<TBlog, TBlogPost, TPostTag>
     {
         IUserInfo GetUserInfo(string key, string username, string password);
         IBlog<TBlog, TBlogPost, TPostTag>[] GetUsersBlogs(string key, string username, string password);

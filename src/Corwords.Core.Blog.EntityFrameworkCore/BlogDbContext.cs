@@ -33,13 +33,13 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<PostTag>()
-                .HasOne(pt => pt.Post)
-                .WithMany(bp => bp.PostTags as List<PostTag>)
+                .HasOne(pt => (BlogPost)pt.Post)
+                .WithMany(bp => (List<PostTag>)bp.PostTags)
                 .HasForeignKey(pc => pc.PostId);
 
             builder.Entity<PostTag>()
-                .HasOne(pt => pt.Tag)
-                .WithMany(t => t.PostTags as List<PostTag>)
+                .HasOne(pt => (Tag)pt.Tag)
+                .WithMany(t => (List<PostTag>)t.PostTags)
                 .HasForeignKey(pc => pc.TagId);
 
             base.OnModelCreating(builder);

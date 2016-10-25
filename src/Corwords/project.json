@@ -2,7 +2,6 @@
   "userSecretsId": "aspnet-Corwords-357B01C1-78A3-4EEF-A4B9-202EBF505CB4",
   "dependencies": {
     "Corwords.Core": "1.0.0-*",
-    "Corwords.Data": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
       "type": "platform"

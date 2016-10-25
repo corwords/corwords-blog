@@ -2,7 +2,6 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Corwords.Data": "1.0.0-*",
     "System.Reflection.TypeExtensions": "4.1.0",
     "Microsoft.AspNetCore.Identity": "1.0.0",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",

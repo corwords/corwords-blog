@@ -5,6 +5,7 @@
     "Corwords.Data": "1.0.0-*",
     "System.Reflection.TypeExtensions": "4.1.0",
     "Microsoft.AspNetCore.Identity": "1.0.0",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
     "Microsoft.AspNetCore.Routing": "1.0.1",
     "Microsoft.NETCore.App": {
       "version": "1.0.1",

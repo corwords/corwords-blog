@@ -19,6 +19,12 @@ namespace Corwords.Core
             Messages = new List<TransactionMessage>();
         }
 
+        public TransactionStatus(string message)
+        {
+            Success = false;
+            Messages = new List<TransactionMessage> { new TransactionMessage(message) };
+        }
+
         public TransactionStatus(bool success, string message)
         {
             Success = success;

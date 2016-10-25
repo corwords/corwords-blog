@@ -1,4 +1,4 @@
-﻿using Corwords.Data.Security;
+﻿using Corwords.Core.Security;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

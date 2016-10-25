@@ -1,8 +1,9 @@
-﻿using Corwords.Core.Config;
-using Corwords.Core.Content.Blog.MetaWeblog;
+﻿using Corwords.Core.Blog;
+using Corwords.Core.Blog.EntityFrameworkCore;
+using Corwords.Core.Config;
 using Corwords.Core.MVC;
+using Corwords.Core.Security;
 using Corwords.Data;
-using Corwords.Data.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WilderMinds.MetaWeblog;
 
 namespace Corwords
 {
@@ -57,8 +57,9 @@ namespace Corwords
                 .AddDefaultTokenProviders();
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
-            // Add blog import service
-            services.AddMetaWeblog<SqlMetaWeblogService>();
+            // Add blog services
+            services.AddBlogging<BlogService, Blog, BlogPost, PostTag>()
+                .AddEntityFrameworkStores<CorwordsContext>();
 
             // Add MVC
             services.AddMvc();
@@ -92,7 +93,7 @@ namespace Corwords
             // TODO: Add UseOAuthAuthentication middleware for connecting to 3rd parties (i.e. Facebook, Twitter, LinkedIn, Microsoft, GitHub)
 
             // Add MetaWeblog Middleware
-            app.UseMetaWeblog("/metaweblog");
+            app.UseMetaWeblog<Blog, BlogPost, PostTag>("/metaweblog");
 
             // Add MVC
             app.UseMvc(ConfigureRoutes);

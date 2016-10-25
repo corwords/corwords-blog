@@ -3,7 +3,6 @@ using Microsoft.Extensions.Options;
 using Corwords.Core.Config;
 using Corwords.Core.Security;
 using Microsoft.AspNetCore.Identity;
-using Corwords.Data.Security;
 using System.Threading.Tasks;
 using Corwords.Data;
 using Corwords.Core.Content.Blog;
@@ -41,11 +40,11 @@ namespace Corwords.Controllers
 
             if (_featureOptions.Blogging)
             {
-                var blogManager = new BlogManager(_context);
-                var blogStatus = blogManager.CreateBlog("blog", "/blog");
+                //var blogManager = new BlogManager(_context);
+                //var blogStatus = blogManager.CreateBlog("blog", "/blog");
 
-                if (blogStatus.Success)
-                    return View();
+                //if (blogStatus.Success)
+                //    return View();
             }
 
             return new NotFoundResult();

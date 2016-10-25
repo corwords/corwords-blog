@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Corwords.Data.Blog
+namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class MediaObject
+    public class Source
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int MediaObjectId { get; set; }
+        public int SourceId { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
-        public string Bits { get; set; }
+        public string Url { get; set; }
     }
 }

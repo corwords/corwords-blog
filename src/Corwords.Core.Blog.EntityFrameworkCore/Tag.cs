@@ -10,8 +10,10 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
+        [StringLength(255), Required]
         public virtual string Title { get; set; }
         public virtual string Description { get; set; }
+        [Required]
         public virtual DateTime DateCreated { get; set; }
         //public string htmlUrl;
         //public string rssUrl;

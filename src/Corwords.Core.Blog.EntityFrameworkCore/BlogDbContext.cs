@@ -36,7 +36,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             builder.Entity<TTag>().ToTable("Corwords_BlogTags");
             builder.Entity<TMediaObject>().ToTable("Corwords_BlogMediaObjects");
             builder.Entity<TMediaObjectInfo>().ToTable("Corwords_BlogMediaObjectInfos");
-            builder.Entity<TEnclosure>().ToTable("Corwords_BlogEnclosuress");
+            builder.Entity<TEnclosure>().ToTable("Corwords_BlogEnclosures");
             builder.Entity<TSource>().ToTable("Corwords_BlogSources");
 
             builder.Entity<PostTag>(b =>

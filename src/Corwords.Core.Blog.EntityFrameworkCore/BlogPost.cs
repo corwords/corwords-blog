@@ -18,8 +18,8 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
         public virtual DateTime DateCreated { get; set; }
         public virtual DateTime DateUpdate { get; set; }
 
-        public virtual int BlogId { get; set; }
-        public virtual IBlog<Blog, BlogPost, PostTag> Blog { get; set; }
+       // public virtual int BlogId { get; set; }
+        //public virtual IBlog<Blog, BlogPost, PostTag> Blog { get; set; }
         public virtual IList<PostTag> PostTags { get; set; }
     }
 }

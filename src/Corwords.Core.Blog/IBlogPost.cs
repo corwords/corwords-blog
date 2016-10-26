@@ -17,8 +17,8 @@ namespace Corwords.Core.Blog
         DateTime DateCreated { get; set; }
         DateTime DateUpdate { get; set; }
 
-        int BlogId { get; set; }
-        IBlog<TBlog, TBlogPost, TPostTag> Blog { get; set; }
+        //int BlogId { get; set; }
+        //IBlog<TBlog, TBlogPost, TPostTag> Blog { get; set; }
         IList<TPostTag> PostTags { get; set; }
     }
 }

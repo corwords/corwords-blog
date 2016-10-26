@@ -7,6 +7,7 @@ namespace Corwords.Core.Blog
         where TBlogPost : class, IBlogPost<TBlog, TBlogPost, TPostTag>
         where TPostTag : class, IPostTag<TBlog, TBlogPost, TPostTag>
     {
-
+        bool CreateBlog(string name, string url);
+        bool ChangeBlogPermissions(string name, string username, bool allowWrite);
     }
 }

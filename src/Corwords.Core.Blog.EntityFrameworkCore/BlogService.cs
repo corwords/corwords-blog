@@ -14,6 +14,16 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
+        public bool ChangeBlogPermissions(string name, string username, bool allowWrite)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreateBlog(string name, string url)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool DeletePost(string key, string postid, string username, string password, bool publish)
         {
             throw new NotImplementedException();

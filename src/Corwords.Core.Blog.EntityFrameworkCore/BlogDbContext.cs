@@ -2,7 +2,7 @@
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public abstract class BlogDbContext : BlogDbContext<Blog, PostTag, Tag, MediaObject, MediaObjectInfo, Enclosure, Source>
+    public abstract class BlogDbContext : BlogDbContext<Blog, BlogPost, Tag, MediaObject, MediaObjectInfo, Enclosure, Source>
     {
         protected BlogDbContext() { }
 
@@ -11,7 +11,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
 
     public abstract class BlogDbContext<TBlog, TBlogPost, TTag, TMediaObject, TMediaObjectInfo, TEnclosure, TSource> : DbContext
         where TBlog : Blog
-        where TBlogPost : PostTag
+        where TBlogPost : BlogPost
         where TTag : Tag
         where TMediaObject : MediaObject
         where TMediaObjectInfo : MediaObjectInfo

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
@@ -32,15 +31,20 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<PostTag>()
-                .HasOne(pt => (BlogPost)pt.Post)
-                .WithMany(bp => (List<PostTag>)bp.PostTags)
-                .HasForeignKey(pc => pc.PostId);
+            builder.Entity<TBlog>().ToTable("Corwords_Blogs");
+            builder.Entity<TBlogPost>().ToTable("Corwords_BlogPosts");
+            builder.Entity<TTag>().ToTable("Corwords_BlogTags");
+            builder.Entity<TMediaObject>().ToTable("Corwords_BlogMediaObjects");
+            builder.Entity<TMediaObjectInfo>().ToTable("Corwords_BlogMediaObjectInfos");
+            builder.Entity<TEnclosure>().ToTable("Corwords_BlogEnclosuress");
+            builder.Entity<TSource>().ToTable("Corwords_BlogSources");
 
-            builder.Entity<PostTag>()
-                .HasOne(pt => (Tag)pt.Tag)
-                .WithMany(t => (List<PostTag>)t.PostTags)
-                .HasForeignKey(pc => pc.TagId);
+            builder.Entity<PostTag>(b =>
+            {
+                b.ToTable("Corwords_BlogPostTags");
+                b.HasOne(pt => (BlogPost)pt.Post).WithMany(bp => bp.PostTags).HasForeignKey(pc => pc.PostId).IsRequired();
+                b.HasOne(pt => (Tag)pt.Tag).WithMany(t => t.PostTags).HasForeignKey(pc => pc.TagId).IsRequired();
+            });
 
             base.OnModelCreating(builder);
         }

@@ -58,8 +58,9 @@ namespace Corwords
             services.AddAuthentication(options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Add blog services
-            services.AddBlogging<BlogService, Blog, BlogPost, PostTag>()
-                .AddEntityFrameworkStores<CorwordsContext>();
+            services.AddBlogging<BlogService, BlogUserService, Blog, BlogPost, PostTag>()
+                .AddEntityFrameworkStores<CorwordsContext>()
+                .AddIdentity<SecurityContext, ApplicationUser, IdentityRole>();
 
             // Add MVC
             services.AddMvc();

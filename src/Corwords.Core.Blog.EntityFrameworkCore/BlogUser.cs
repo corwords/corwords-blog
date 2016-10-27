@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Blog.EntityFrameworkCore
 {
-    public class UserInfo : IUserInfo
+    public class BlogUser : IBlogUser
     {
         public virtual string Id { get; set; }
         public virtual string Username { get; set; }

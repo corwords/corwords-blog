@@ -54,7 +54,7 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public IUserInfo GetUserInfo(string key, string username, string password)
+        public IBlogUser GetUserInfo(string key, string username, string password)
         {
             throw new NotImplementedException();
         }

@@ -7,7 +7,7 @@ namespace Corwords.Core.Blog
         where TBlogPost : class, IBlogPost<TBlog, TBlogPost, TPostTag>
         where TPostTag : class, IPostTag<TBlog, TBlogPost, TPostTag>
     {
-        IUserInfo GetUserInfo(string key, string username, string password);
+        IBlogUser GetUserInfo(string key, string username, string password);
         IBlog<TBlog, TBlogPost, TPostTag>[] GetUsersBlogs(string key, string username, string password);
 
         IBlogPost<TBlog, TBlogPost, TPostTag> GetPost(string postid, string username, string password);

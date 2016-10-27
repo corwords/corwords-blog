@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Blog
 {
-    public interface IUserInfo
+    public interface IBlogUser
     {
         string Id { get; set; }
         string Username { get; set; }

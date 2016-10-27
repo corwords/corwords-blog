@@ -1,6 +1,6 @@
 ﻿namespace Corwords.Core.Blog
 {
-    public interface IBlogRole
+    public interface IBlogPermission
     {
         string Id { get; set; }
         string RoleName { get; set; }

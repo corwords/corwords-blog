@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -60,7 +61,8 @@ namespace Corwords
             // Add blog services
             services.AddBlogging<BlogService, BlogUserService, Blog, BlogPost, PostTag>()
                 .AddEntityFrameworkStores<CorwordsContext>()
-                .AddIdentity<SecurityContext, ApplicationUser, IdentityRole>();
+                .AddIdentity<UserManager<ApplicationUser>, RoleManager<IdentityRole>>();
+                //.AddIdentity<SecurityContext, ApplicationUser, IdentityRole>();
 
             // Add MVC
             services.AddMvc();

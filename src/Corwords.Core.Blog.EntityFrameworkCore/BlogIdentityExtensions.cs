@@ -10,20 +10,19 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
 {
     public static class BlogIdentityExtensions
     {
-        public static BlogBuilder AddIdentity<TContext, TUser, TRole>(this BlogBuilder builder)
-            where TUser : class
-            where TRole : class
-            where TContext : DbContext
+        public static BlogBuilder AddIdentity<TUserManager, TRoleManager>(this BlogBuilder builder)
+            where TUserManager : class
+            where TRoleManager : class
         {
-            builder.Services.TryAdd(GetDefaultServices(builder.BlogUserType, typeof(TContext), typeof(TUser), typeof(TRole)));
+            builder.Services.TryAdd(GetDefaultServices(builder.BlogUserType, typeof(TUserManager), typeof(TRoleManager)));
             return builder;
         }
 
-        private static IServiceCollection GetDefaultServices(Type blogUserType, Type contextType, Type userType, Type roleType)
+        private static IServiceCollection GetDefaultServices(Type blogUserType, Type userManagerType, Type roleManagerType)
         {
-            var blogUserServiceType = typeof(BlogUserService).MakeGenericType(blogUserType, contextType);
+            //var blogUserServiceType = typeof(BlogUserService).MakeGenericType(blogUserType, contextType);
             var services = new ServiceCollection();
-            services.AddScoped(typeof(IBlogUserService).MakeGenericType(blogUserType), blogUserServiceType);
+            //services.AddScoped(typeof(IBlogUserService).MakeGenericType(blogUserType), blogUserServiceType);
             return services;
         }
     }

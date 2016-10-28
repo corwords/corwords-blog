@@ -25,7 +25,8 @@
     },
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Corwords.Core.Blog.EntityFrameworkCore": "1.0.0-*",
-    "Corwords.Core.Blog": "1.0.0-*"
+    "Corwords.Core.Blog": "1.0.0-*",
+    "Microsoft.AspNetCore.Identity": "1.0.0"
   },
 
   "tools": {

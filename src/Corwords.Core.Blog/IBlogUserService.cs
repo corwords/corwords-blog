@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Corwords.Core.Blog
 {
-    public interface IBlogUserService
+    public interface IBlogUserService<TUserManager, TRoleManager>
+        where TUserManager : class
+        where TRoleManager : class
     {
     }
 }

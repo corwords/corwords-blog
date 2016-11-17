@@ -14,15 +14,19 @@ namespace Corwords.Core.Blog.EntityFrameworkCore
             where TUserManager : class
             where TRoleManager : class
         {
-            builder.Services.TryAdd(GetDefaultServices(builder.BlogUserType, typeof(TUserManager), typeof(TRoleManager)));
+            builder.Services.TryAdd(GetDefaultServices<TUserManager, TRoleManager>(builder.BlogUserType));
             return builder;
         }
 
-        private static IServiceCollection GetDefaultServices(Type blogUserType, Type userManagerType, Type roleManagerType)
+        private static IServiceCollection GetDefaultServices<TUserManager, TRoleManager>(Type blogUserType)
+            where TUserManager : class
+            where TRoleManager : class
         {
-            //var blogUserServiceType = typeof(BlogUserService).MakeGenericType(blogUserType, contextType);
+            var userManagerType = typeof(TUserManager);
+            var roleManagerType = typeof(TRoleManager);
+            var blogUserManagerType = typeof(BlogUserService).MakeGenericType(blogUserType, userManagerType);
             var services = new ServiceCollection();
-            //services.AddScoped(typeof(IBlogUserService).MakeGenericType(blogUserType), blogUserServiceType);
+            //services.AddScoped(typeof(IBlogUserService).MakeGenericType(blogUserType), blogUserManagerType);
             return services;
         }
     }
